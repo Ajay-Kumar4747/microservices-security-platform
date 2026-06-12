@@ -3,10 +3,25 @@ plugins {
 }
 
 allprojects {
-    group = 'com.ak'
+    group = 'com.ajay'
     version = '1.0.0'
 
     repositories {
         mavenCentral()
+    }
+}
+
+subprojects {
+
+    apply plugin: 'java'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    tasks.withType(Test) {
+        useJUnitPlatform()
     }
 }
