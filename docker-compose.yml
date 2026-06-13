@@ -1,0 +1,28 @@
+services:
+
+  config-server:
+    image: security-config-server:latest
+    container_name: config-server-container
+    ports:
+      - "8888:8888"
+
+  auth-server:
+    image: security-auth-server:latest
+    container_name: auth-server-container
+    ports:
+      - "9000:9000"
+
+  employee-service:
+    image: security-employee-service:latest
+    container_name: employee-service-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - auth-server
+      - config-server
+
+  gateway:
+    image: security-gateway:latest
+    container_name: gateway-container
+    ports:
+      - "8080:8080"

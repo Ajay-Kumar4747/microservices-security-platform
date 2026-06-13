@@ -6,8 +6,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9000
+          issuer-uri: http://auth-server:9000
 
   data:
     mongodb:
-      uri: mongodb://localhost:27017/employee
+      uri: mongodb://host.docker.internal:27017/employee
